@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import be.ipam.cryptowallet.entity.UserEntity;
 
-@Repository
 public interface UserEntityRepository extends CrudRepository<UserEntity, Long> {
 
 }
