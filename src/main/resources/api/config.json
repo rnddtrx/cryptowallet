@@ -1,0 +1,31 @@
+{
+
+  "library": "spring-mvc",
+
+  "dateLibrary": "java8",
+
+  "hideGenerationTimestamp": true,
+
+  "modelPackage": "be.ipam.cryptowallet.api.model",
+
+  "apiPackage": "be.ipam.cryptowallet.api",
+
+  "invokerPackage": "be.ipam.cryptowallet.api",
+
+  "serializableModel": true,
+
+  "useTags": true,
+
+  "useGzipFeature" : true,
+
+  "hateoas": true,
+
+  "withXml": false,
+  
+  "importMappings": {
+
+      "Link": "org.springframework.hateoas.Link"
+
+  }
+
+}

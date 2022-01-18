@@ -14,11 +14,11 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="Transaction")
+@Table(name="`Transaction`")
 public class TransactionEntity {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long TransactionId;
+	private long transactionId;
 	private double quantity;
 	private Date date;
 	private double price;

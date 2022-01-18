@@ -1,0 +1,525 @@
+openapi: 3.0.3
+info:
+  title: Mon API Crypto
+  description: |
+    API du PF crypto
+  termsOfService: Exemple
+  contact:
+    email: renaud.dutrieux@hainaut-promsoc.be
+  version: 1.0.0
+externalDocs:
+  description: Any document link you want to generate along with API.
+  url: http://swagger.io
+servers:
+  - url: https://test.ipam.be/v1
+tags:
+  - name: User
+    description: Mon user
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Wallet
+    description: Mon portefeuille
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Transaction
+    description: Ma transaction
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Crypto
+    description: Ma crypto
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+  - name: Auth
+    description: Ma auth
+    externalDocs:
+      description: Find out more (extra document link)
+      url: http://swagger.io
+paths:
+  /api/v1/users/{userId}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: Retourne un user
+      description: Retourne un user
+      operationId: getUserById
+      parameters:
+        - name: userId
+          in: path
+          description: USer Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '404':
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: Delete user
+      description: Delete user
+      operationId: deleteUserById
+      parameters:
+        - name: userId
+          in: path
+          description: USer Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: update the user
+      description: update the user
+      operationId: updateUser
+      parameters:
+        - name: userId
+          in: path
+          description: USer Identifier
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Utilisateur object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '200':
+          description: Updated
+  /api/v1/users/:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - User
+      summary: Ajouter un user
+      description: Ajout un user
+      operationId: addUser
+      requestBody:
+        description: Utilisateur object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        '201':
+          description: created
+          content: {}
+  /api/v1/wallets/{walletId}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Wallet
+      summary: Retourne un wallet
+      description: Retourne un wallet
+      operationId: getWalletById
+      parameters:
+        - name: walletId
+          in: path
+          description: Wallet Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Wallet'
+        '404':
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - Wallet
+      summary: Delete wallet
+      description: Delete user
+      operationId: deleteWalletById
+      parameters:
+        - name: walletId
+          in: path
+          description: Wallet Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - Wallet
+      summary: update the wallet
+      description: update the wallet
+      operationId: updateWallet
+      parameters:
+        - name: walletId
+          in: path
+          description: Wallet Identifier
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Wallet object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wallet'
+      responses:
+        '200':
+          description: Updated
+  /api/v1/wallets/:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Wallet
+      summary: Ajouter un wallet
+      description: Ajout un wallet
+      operationId: addWallet
+      requestBody:
+        description: Wallet object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Wallet'
+      responses:
+        '201':
+          description: created
+          content: {}
+  /api/v1/transaction/{transactionId}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Transaction
+      summary: Retourne une transaction
+      description: Retourne une transaction
+      operationId: getTransactionById
+      parameters:
+        - name: transactionId
+          in: path
+          description: transaction Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Transaction'
+        '404':
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - Transaction
+      summary: Delete transaction
+      description: Delete transaction
+      operationId: deleteTransactionById
+      parameters:
+        - name: transactionId
+          in: path
+          description: Transaction Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - Transaction
+      summary: update the transaction
+      description: update the transaction
+      operationId: updateTransaction
+      parameters:
+        - name: transactionId
+          in: path
+          description: transaction Identifier
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Transaction object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '200':
+          description: Updated
+  /api/v1/transaction/:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Transaction
+      summary: Ajouter une transaction
+      description: Ajout une transaction
+      operationId: addTransaction
+      requestBody:
+        description: Transaction object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Transaction'
+      responses:
+        '201':
+          description: created
+          content: {}
+  /api/v1/crypto/{cryptoId}:
+    get:
+      security:
+        - bearerAuth: []
+      tags:
+        - Crypto
+      summary: Retourne une crypto
+      description: Retourne une crypto
+      operationId: getCryptoById
+      parameters:
+        - name: cryptoId
+          in: path
+          description: crypto Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crypto'
+        '404':
+          description: Given user ID doesn't exist
+          content: {}
+    delete:
+      security:
+        - bearerAuth: []
+      tags:
+        - Crypto
+      summary: Delete crypto
+      description: Delete crypto
+      operationId: deleteCryptoById
+      parameters:
+        - name: cryptoId
+          in: path
+          description: Crypto Identifier
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No content
+    patch:
+      security:
+        - bearerAuth: []
+      tags:
+        - Crypto
+      summary: update the crypto
+      description: update the crypto
+      operationId: updateCrypto
+      parameters:
+        - name: cryptoId
+          in: path
+          description: transaction Identifier
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: crypto object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crypto'
+      responses:
+        '200':
+          description: Updated
+  /api/v1/crypto/:
+    post:
+      security:
+        - bearerAuth: []
+      tags:
+        - Crypto
+      summary: Ajouter une crypto
+      description: Ajout une crypto
+      operationId: addCrypto
+      requestBody:
+        description: Crypto object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crypto'
+      responses:
+        '201':
+          description: created
+          content: {}
+  /api/v1/authenticate/:
+    post:
+      tags:
+        - Auth
+      summary: Auth
+      description: Auth
+      operationId: authenticate
+      requestBody:
+        description: auth object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Auth'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Token'
+        '404':
+          description: Given user ID doesn't exist
+          content: {}
+components:
+  schemas:
+    User:
+      description: Une classe User
+      type: object
+      properties:
+        userId:
+          description: User ID
+          type: number
+        lastname:
+          description: Nom
+          type: string
+        firstname:
+          description: Prénom
+          type: string
+        mail:
+          description: Mail
+          type: string
+        password:
+          description: Password
+          type: string
+    Wallet:
+      description: Une classe Wallet
+      type: object
+      properties:
+        walletId:
+          description: Wallet ID
+          type: number
+        name:
+          description: Nom
+          type: string
+        addressEth:
+          description: Adresse Ether
+          type: string
+        addressBtc:
+          description: Adresse Bitcoin
+          type: string
+        transactions:
+          description: Collection of Song.
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    Transaction:
+      description: Une classe Transaction
+      type: object
+      properties:
+        transactionId:
+          description: Transaction ID
+          type: number
+        number:
+          description: Nombre acheté
+          type: number
+        date:
+          description: Date Opération
+          type: string
+        price:
+          description: Prix achat vente
+          type: number
+        operation:
+          description: Numéro Operation
+          type: number
+        wallet:
+            $ref: '#/components/schemas/Wallet'
+        crypto:
+            $ref: '#/components/schemas/Crypto'
+    Crypto:
+      description: Une classe Crypto
+      type: object
+      properties:
+        cryptoId:
+          description: Crypto id
+          type: number
+        name:
+          description: Nom
+          type: string
+        symbol:
+          description: Symbole
+          type: string
+        lastPrice:
+          description: Dernier prix
+          type: number
+    Auth:
+      description: Une auth
+      type: object
+      properties:
+        username:
+          description: username
+          type: string
+        password:
+          description: password
+          type: string
+    Token:
+      description: Un token
+      type: object
+      properties:
+        token:
+          description: token
+          type: string
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
